@@ -1,5 +1,6 @@
 import React, { useContext, useState, useRef } from 'react';
 import { TaskContext } from '../context/TaskContext';
+import '../style.css';
 
 export default function TaskItem({ task }) {
   const { toggleTask, deleteTask, editTask } = useContext(TaskContext);
@@ -15,25 +16,24 @@ export default function TaskItem({ task }) {
   };
 
   return (
-    <li className="flex items-center justify-between p-4 bg-white rounded-xl shadow-md border border-purple-200">
-      <div className="flex items-center space-x-3">
+    <li className="task-item">
+      <div className="left">
         <input
           type="checkbox"
           checked={task.completed}
           onChange={() => toggleTask(task.id)}
-          className="w-5 h-5 text-purple-500 focus:ring-purple-400"
         />
         {isEditing ? (
           <input
             ref={editRef}
-            className="border-2 border-purple-200 p-2 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-300"
+            className="task-input"
             value={editValue}
             onChange={e => setEditValue(e.target.value)}
             onKeyDown={e => e.key === 'Enter' && handleSave()}
           />
         ) : (
           <span
-            className={`cursor-pointer ${task.completed ? 'line-through text-purple-300' : 'text-purple-700'}`}
+            className={task.completed ? 'completed' : ''}
             onDoubleClick={() => {
               setIsEditing(true);
               setTimeout(() => editRef.current?.focus(), 0);
@@ -44,28 +44,13 @@ export default function TaskItem({ task }) {
         )}
       </div>
 
-      <div className="flex space-x-3">
+      <div className="task-actions">
         {isEditing ? (
-          <button
-            onClick={handleSave}
-            className="px-3 py-1 rounded-lg bg-green-200 text-green-700 font-medium hover:bg-green-300 transition"
-          >
-            Зберегти
-          </button>
+          <button className="save-btn" onClick={handleSave}>Зберегти</button>
         ) : (
-          <button
-            onClick={() => setIsEditing(true)}
-            className="px-3 py-1 rounded-lg bg-purple-200 text-purple-700 hover:bg-purple-300 transition"
-          >
-            Редагувати
-          </button>
+          <button className="edit-btn" onClick={() => setIsEditing(true)}>Редагувати</button>
         )}
-        <button
-          onClick={() => deleteTask(task.id)}
-          className="px-3 py-1 rounded-lg bg-red-100 text-red-600 hover:bg-red-200 transition"
-        >
-          Видалити
-        </button>
+        <button className="delete-btn" onClick={() => deleteTask(task.id)}>Видалити</button>
       </div>
     </li>
   );

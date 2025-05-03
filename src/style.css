@@ -1,0 +1,148 @@
+
+:root {
+    --lavender-bg: #f8f8ff;
+    --lavender-light: #e6e6fa;
+    --lavender-medium: #d8bfd8;
+    --lavender-dark: #9370db;
+    --text-dark: #333;
+  }
+  
+  * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+  body {
+    background-color: var(--lavender-bg);
+    font-family: 'Segoe UI', Tahoma, sans-serif;
+    color: var(--text-dark);
+    line-height: 1.5;
+  }
+  
+  
+  .container {
+    max-width: 400px;
+    margin: 40px auto;
+    background: white;
+    border-radius: 16px;
+    padding: 24px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+  }
+  
+  
+  .container h1 {
+    text-align: center;
+    margin-bottom: 24px;
+    font-size: 1.8rem;
+    color: var(--lavender-dark);
+  }
+  
+  .task-input {
+    width: 100%;
+    padding: 12px;
+    border: 2px solid var(--lavender-medium);
+    border-radius: 8px 0 0 8px;
+    outline: none;
+    transition: border-color 0.3s;
+  }
+  .task-input:focus {
+    border-color: var(--lavender-dark);
+  }
+  .add-btn {
+    padding: 12px 20px;
+    border: none;
+    background: var(--lavender-dark);
+    color: white;
+    cursor: pointer;
+    border-radius: 0 8px 8px 0;
+    transition: background 0.3s;
+  }
+  .add-btn:hover {
+    background: #7a5dc7;
+  }
+  
+  .filters {
+    display: flex;
+    justify-content: center;
+    margin: 24px 0;
+  }
+  .filter-btn {
+    margin: 0 4px;
+    padding: 8px 16px;
+    border: none;
+    background: var(--lavender-light);
+    color: var(--lavender-dark);
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background 0.3s, color 0.3s;
+  }
+  .filter-btn.active {
+    background: var(--lavender-dark);
+    color: white;
+  }
+  .filter-btn:hover {
+    background: var(--lavender-medium);
+  }
+  
+  .task-list {
+    list-style: none;
+  }
+  .task-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 12px;
+    background: var(--lavender-bg);
+    border-radius: 12px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+    margin-bottom: 12px;
+  }
+  .task-item .left {
+    display: flex;
+    align-items: center;
+  }
+  .task-item input[type='checkbox'] {
+    width: 18px;
+    height: 18px;
+    accent-color: var(--lavender-dark);
+    margin-right: 12px;
+  }
+  .task-item span {
+    cursor: pointer;
+  }
+  .task-item .completed {
+    text-decoration: line-through;
+    color: var(--lavender-light);
+  }
+  
+  .task-actions button {
+    margin-left: 8px;
+    padding: 6px 12px;
+    font-size: 0.9rem;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background 0.3s;
+  }
+  .task-actions .edit-btn {
+    background: var(--lavender-light);
+    color: var(--lavender-dark);
+  }
+  .task-actions .edit-btn:hover {
+    background: var(--lavender-medium);
+  }
+  .task-actions .save-btn {
+    background: #c8e6c9;
+    color: #2e7d32;
+  }
+  .task-actions .save-btn:hover {
+    background: #a5d6a7;
+  }
+  .task-actions .delete-btn {
+    background: #ffebee; 
+    color: #c62828;
+  }
+  .task-actions .delete-btn:hover {
+    background: #ffcdd2;
+  }
+  

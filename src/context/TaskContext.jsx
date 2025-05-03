@@ -1,9 +1,8 @@
 import React, { createContext, useState, useEffect, useCallback } from 'react';
 
-// контекст
 export const TaskContext = createContext();
 
-//Провайдер
+// Провайдер
 export function TaskProvider({ children }) {
   // Список задач
   const [tasks, setTasks] = useState([]);
@@ -19,7 +18,7 @@ export function TaskProvider({ children }) {
     localStorage.setItem('tasks', JSON.stringify(tasks));
   }, [tasks]);
 
-  // Додавання задачі
+  // Нова задача
   const addTask = useCallback((text) => {
     setTasks(prev => [
       ...prev,
@@ -27,6 +26,7 @@ export function TaskProvider({ children }) {
     ]);
   }, []);
 
+  // редагувати,видалити завдання
   const editTask = useCallback((id, newText) => {
     setTasks(prev => prev.map(t => t.id === id ? { ...t, text: newText } : t));
   }, []);
